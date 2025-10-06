@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tax Form — Total Income</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+      <header class="card-header">
+        <h1>Tax Form — Total Income</h1>
+        <p class="muted">Enter income from two sources. Calculation happens on the server.</p>
+      </header>
+
+      <% if (errors && errors.length) { %>
+        <div class="errors">
+          <strong>Fix these:</strong>
+          <ul>
+            <% errors.forEach(function(e){ %>
+              <li><%= e %></li>
+            <% }) %>
+          </ul>
+        </div>
+      <% } %>
+
+      <form action="/calculate" method="post" class="form-grid" autocomplete="off" novalidate>
+        <div class="field">
+          <label for="s1">Income — Source 1</label>
+          <input id="s1" name="source1" inputmode="decimal" placeholder="e.g., 50,000.00" value="<%= source1 %>">
+        </div>
+
+        <div class="field">
+          <label for="s2">Income — Source 2</label>
+          <input id="s2" name="source2" inputmode="decimal" placeholder="e.g., 20,000.00" value="<%= source2 %>">
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn">Calculate Total</button>
+          <button type="reset" class="btn ghost">Clear</button>
+        </div>
+      </form>
+
+      <footer class="card-foot">
+        <small>Only server-side calculation & validation — no client-side math.</small>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

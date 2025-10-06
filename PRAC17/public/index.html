@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuition Admin Panel</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #111;
+      padding: 20px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      padding: 20px;
+      flex: 1;
+      min-width: 300px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    /* Form Inputs */
+    input,
+    textarea {
+      width: 100%;
+      margin: 6px 0 12px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    /* Buttons */
+    #saveBtn {
+      background: #111;
+      color: #fff;
+    }
+
+    #saveBtn:hover {
+      background: #333;
+    }
+
+    #resetBtn {
+      background: #777;
+      color: #fff;
+      margin-top: 5px;
+    }
+
+    #resetBtn:hover {
+      background: #555;
+    }
+
+    /* List */
+    .list {
+      margin-top: 12px;
+    }
+
+    .item {
+      padding: 12px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fafafa;
+    }
+
+    .actions button {
+      margin-left: 4px;
+      padding: 6px 10px;
+      font-size: 13px;
+      border-radius: 4px;
+    }
+
+    .actions .delBtn {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .actions .editBtn {
+      background: #10b981;
+      color: #fff;
+    }
+
+    /* Messages */
+    .message {
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    .message.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #10b981;
+    }
+
+    .message.error {
+      background: #fff1f2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
+    }
+
+    /* Search Input */
+    #q {
+      margin-bottom: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    /* Table Styling */
+    #studentsTable {
+      width: 95%;
+      /* slightly narrower than card */
+      margin: 10px auto;
+      /* center with top/bottom space */
+      border-collapse: collapse;
+    }
+
+    #studentsTable th,
+    #studentsTable td {
+      border-bottom: 1px solid #eee;
+      padding: 8px;
+    }
+
+    #studentsTable tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    #studentsTable tr:hover {
+      background: #f0f4f8;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Student Form -->
+    <div class="card">
+      <h2>Student Form</h2>
+      <div id="formMsg" class="message"></div>
+      <form id="studentForm">
+        <input type="hidden" id="studentId">
+        <label>Name</label><input id="name" placeholder="Enter name" required>
+        <label>Age</label><input id="age" type="number" placeholder="Enter age">
+        <label>Class</label><input id="className" placeholder="Enter class">
+        <label>Parent Email</label><input id="parentEmail" type="email" placeholder="Enter parent's email">
+        <label>Phone</label><input id="phone" placeholder="Enter phone number">
+        <label>Address</label><textarea id="address" placeholder="Enter address"></textarea>
+        <button type="submit" id="saveBtn">Add Student</button>
+        <button type="button" id="resetBtn">Reset</button>
+      </form>
+    </div>
+
+    <!-- Student List Table BELOW the form -->
+    <div class="card" style="margin-top:20px;">
+      <h2>Students</h2>
+      <input type="text" id="q" placeholder="Search students...">
+      <div id="listMsg" class="message"></div>
+      <table id="studentsTable" style="width:100%; border-collapse: collapse; margin-top:12px;">
+        <thead>
+          <tr style="background:#111; color:#fff; text-align:left;">
+            <th style="padding:8px;">Name</th>
+            <th style="padding:8px;">Class</th>
+            <th style="padding:8px;">Phone</th>
+            <th style="padding:8px;">Parent Email</th>
+            <th style="padding:8px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="studentsList">
+          <!-- Rows will be generated here -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

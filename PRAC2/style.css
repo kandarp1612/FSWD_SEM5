@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Oswald:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(53, 193, 203);
+    font-family: 'Josefin Sans', sans-serif;
+    align-content: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 0 50px rgba(0,0,0,3);
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    color: rgb(53, 193, 203);
+    font-size: 45px;
+}
+
+#cityInput {
+    padding: 10px;
+    width: 200px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#getWeatherBtn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: rgb(53, 193, 203);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#getWeatherBtn:hover {
+    background-color: rgb(35, 160, 170);
+}
+
+#weatherResult {
+    justify-self: center;
+    margin-top: 20px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+}

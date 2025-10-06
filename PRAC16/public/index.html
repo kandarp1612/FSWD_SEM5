@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Portfolio</title>
+
+  <style>
+    :root{
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --line: #e6e9ee;
+      --accent: #111827;
+      --success-bg: #ecfdf5;
+      --error-bg: #fff1f2;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:linear-gradient(180deg,var(--bg),#ffffff 80%);
+      color:var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:820px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:start;
+    }
+
+    .intro { padding:28px; }
+    .card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:20px;
+      box-shadow:0 6px 18px rgba(16,24,40,0.04);
+    }
+
+    h1{ margin:0 0 8px; font-size:20px; }
+    p.lead{ margin:0; color:var(--muted); font-size:14px; }
+
+    form { display:flex; flex-direction:column; gap:12px; }
+    label{ font-size:13px; color:var(--muted); margin-bottom:6px; display:block; }
+
+    input, textarea {
+      width:100%; padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      font-size:14px; background:transparent;
+    }
+    input:focus, textarea:focus{
+      border-color:#cbd5e1; outline:none;
+      box-shadow:0 4px 12px rgba(17,24,39,0.06);
+    }
+    textarea { resize:vertical; min-height:120px; }
+
+    .row{ display:flex; gap:12px; }
+    .row .col{ flex:1; }
+
+    .controls{ display:flex; gap:12px; align-items:center; margin-top:8px; }
+    button {
+      background:var(--accent); color:#fff;
+      border:0; padding:10px 14px;
+      border-radius:8px; font-weight:600;
+      cursor:pointer; min-width:110px;
+    }
+    button[disabled]{ opacity:0.6; cursor:not-allowed }
+
+    .muted{ color:var(--muted); font-size:13px; }
+    .response{ margin-top:12px; padding:12px; border-radius:8px; display:none; font-size:14px; }
+    .response.success{ background:var(--success-bg); color:#065f46; border:1px solid #10b981; display:block; }
+    .response.error{ background:var(--error-bg); color:#7f1d1d; border:1px solid #ef4444; display:block; }
+    .errors{ margin-top:8px; color:#7f1d1d; font-size:13px; }
+
+    @media(max-width:880px){
+      .wrap{ grid-template-columns:1fr; padding:0 6px; }
+      .card{ padding:18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="intro">
+      <div class="card">
+        <h1>Contact me</h1>
+        <p class="lead">Have a project, an idea, or a quick question? Use the form — I usually reply within a day.</p>
+        <hr style="border:none;border-top:1px solid var(--line);margin:14px 0" />
+        <div style="font-size:13px; color:var(--muted);">Email: you@example.com</div>
+        <div style="margin-top:6px;font-size:13px; color:var(--muted);">Availability: Mon — Fri, remote</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div class="col">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" />
+            </div>
+            <div class="col">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div>
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Short subject" />
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project..." rows="6"></textarea>
+          </div>
+          <div class="controls">
+            <button id="submitBtn" type="submit">Submit</button>
+            <div class="muted">or email at <strong>you@example.com</strong></div>
+          </div>
+          <div id="responseMessage" class="response"></div>
+          <div id="errorDetails" class="errors"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

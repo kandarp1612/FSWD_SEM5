@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>Profile</h1>
+    <div id="info">Loading…</div>
+    <div style="margin-top:14px;">
+      <button id="logoutBtn">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    async function loadSession() {
+      const res = await fetch('/session');
+      if (res.status === 401) {
+        // not logged in -> go to login
+        location.href = '/login.html?msg=' + encodeURIComponent('Please log in first');
+        return;
+      }
+      const data = await res.json();
+      const user = data.user;
+      const when = new Date(user.loginTime);
+      document.getElementById('info').innerHTML = `
+        <p><strong>Name:</strong> ${escapeHtml(user.name)}</p>
+        <p><strong>Login time:</strong> ${when.toLocaleString()}</p>
+      `;
+    }
+
+    // simple escaping to avoid injection if name is weird
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await fetch('/logout', { method: 'POST' });
+      location.href = '/login.html?msg=' + encodeURIComponent('You have been logged out');
+    });
+
+    loadSession();
+  </script>
+</body>
+</html>

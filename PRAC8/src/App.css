@@ -1,0 +1,248 @@
+:root {
+  --bg: #0f0f12;
+  --panel: #17171c;
+  --text: #ffffff;
+  --muted: #9aa0a6;
+  --primary: #3b82f6; /* blue */
+  --danger: #ef4444;  /* red */
+  --radius: 16px;
+  --gap: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.wrap {
+  min-height: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  display: grid;
+  gap: var(--gap);
+  align-content: center;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 4.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--text);
+  text-align: center;
+}
+
+.count {
+  background: var(--panel);
+  border: 1px solid #1f1f25;
+  border-radius: var(--radius);
+  text-align: center;
+  padding: 28px 20px;
+  font-weight: 800;
+  line-height: 1;
+  font-size: clamp(64px, 12vw, 140px);
+  user-select: none;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid #2a2a32;
+  background: #22222a;
+  color: var(--text);
+  font-size: clamp(18px, 3.6vw, 24px);
+  font-weight: 700;
+  padding: 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  min-height: 64px;
+  transition: transform 0.06s ease, box-shadow 0.1s ease, border-color 0.2s ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.35);
+  touch-action: manipulation;
+}
+
+.btn:hover { border-color: #3a3a46; }
+.btn:active { transform: translateY(1px); }
+
+.btn:focus-visible {
+  outline: 3px solid #8ab4f8;
+  outline-offset: 2px;
+}
+
+.primary {
+  background: var(--primary);
+  border-color: #2b6fd4;
+}
+
+.reset {
+  width: 100%;
+  background: #261b1b;
+  border-color: #3a2424;
+  color: #ffdddd;
+}
+
+.hint {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Small screens: keep everything comfy to tap */
+@media (max-width: 420px) {
+  .btn { min-height: 72px; }
+}
+
+/* =============== */
+/* Global settings */
+/* =============== */
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --text: #ffffff;
+  --muted: #9aa0a6;
+  --primary: #4ade80;   /* green */
+  --danger: #ef4444;    /* red */
+  --radius: 20px;
+  --gap: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ========= */
+/* Container */
+/* ========= */
+.wrap {
+  min-height: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  gap: var(--gap);
+  align-content: center;
+  justify-items: center;
+}
+
+/* ====== */
+/* Header */
+/* ====== */
+h1 {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ========== */
+/* Counter UI */
+/* ========== */
+.count {
+  background: var(--panel);
+  border: 2px solid #30363d;
+  border-radius: var(--radius);
+  text-align: center;
+  padding: 30px 20px;
+  font-weight: 800;
+  line-height: 1;
+  font-size: clamp(70px, 14vw, 150px);
+  min-width: 220px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+.count:active {
+  transform: scale(0.97);
+}
+
+/* ============ */
+/* Buttons area */
+/* ============ */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  width: 100%;
+}
+
+/* Base button style */
+.btn {
+  appearance: none;
+  border: none;
+  border-radius: var(--radius);
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  min-height: 70px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Color variations */
+.primary {
+  background: var(--primary);
+  color: #000;
+}
+.primary:hover {
+  background: #22c55e;
+}
+
+.danger {
+  background: var(--danger);
+  color: #fff;
+}
+.danger:hover {
+  background: #dc2626;
+}
+
+/* Reset button full width */
+.reset {
+  width: 100%;
+  background: #374151;
+  color: #f3f4f6;
+}
+.reset:hover {
+  background: #4b5563;
+}
+
+/* ====== */
+/* Footer */
+/* ====== */
+.hint {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}

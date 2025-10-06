@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rep Counter</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Rep Counter</h1>
+
+    <div id="count" class="count" role="status" aria-live="polite" aria-atomic="true">0</div>
+
+    <div class="controls">
+      <button id="decrement" class="btn danger" aria-label="Decrease count by one">–1</button>
+      <button id="increment" class="btn primary" aria-label="Increase count by one">+1</button>
+    </div>
+
+    <button id="reset" class="btn reset" aria-label="Reset counter to zero">Reset</button>
+
+    <p class="hint">
+      Tips: Space / + increases • – decreases • R resets
+    </p>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
